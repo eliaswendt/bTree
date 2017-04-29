@@ -9,18 +9,28 @@ using namespace std;
 
 int main(int argc, char* argv[]) {
 
-    Node root("fucking root!"); // = new Node("myRoot");
+    Node *root = new Node(6); // = new Node("myRoot");
+    Tree *myTree = new Tree(root);
 
-    Tree bTree(&root);
 
+	cout << "root node id: " << root->getID() << endl;
 
-    string input;
+    unsigned id;
+    string input, data;
+
+    Node *current;
+
     while (true) {
 
-        getline(cin, input);
-        Node current(&input);
 
-        bTree.insert(&current);
+	cout << endl << "ID: ";
+	cin >> id;
+	cout << "data: ";
+	cin >> data;
+
+	current = new Node(id);
+	current->setData(data);
+
     }
 
 

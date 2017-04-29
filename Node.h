@@ -7,7 +7,7 @@
 class Node
 {
     public:
-        Node(unsigned int id);
+        Node(unsigned id);
         ~Node();
 
         unsigned int getID();
@@ -20,7 +20,7 @@ class Node
 
     private:
 
-        unsigned int id;
+        unsigned id;
 
         Node *left;
         Node *right;

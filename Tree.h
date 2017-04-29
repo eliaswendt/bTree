@@ -6,7 +6,7 @@
 class Tree
 {
     public:
-        Tree(Node * root);
+        Tree(Node *root);
         ~Tree();
 
         bool insert(Node *node);

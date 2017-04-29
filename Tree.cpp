@@ -1,5 +1,7 @@
 #include "Tree.h"
 #include "Node.h"
+#include <iostream>
+
 
 // set root
 Tree::Tree(Node *root)
@@ -27,44 +29,59 @@ bool Tree::insert(Node *node) {
         // buffer of current node
         currentNodeID = current->getID();
 
+	std::cout << "[loop]: " << currentNodeID << std::endl;
+
         // nodeID is smaller than current nodeID
         if (nodeID < currentNodeID) {
+
+            std::cout << "choosing left node" << std::endl;
 
             // left child is not set
             if (current->getLeft() == NULL) {
                 current->setLeft(node);
 
+                std::cout << "left is null -> inserting" << std::endl;
+
                 this->nodeCount++;
                 return true;
             }
+            std::cout << "hier simma" << std::endl;
 
             // left child is not empty
             current = current->getLeft();
         }
 
-        // nodeID is taller than current nodeID
+        // nodeID is greater than current nodeID
         else if (nodeID > currentNodeID) {
+
+            std::cout << "choosing right node" << std::endl;
 
             // right child is not set
             if (current->getRight() == NULL) {
                 current->setRight(node);
 
+                std::cout << "right is null -> inserting" << std::endl;
+
                 this->nodeCount++;
                 return true;
             }
+            std::cout << "hier simma" << std::endl;
 
-            // right child is not empty
-            else {
-                current = current->getLeft();
-            }
+            current = current->getLeft();
         }
 
-        // nodeID already in use
-        return false;
+        else {
+	    std::cout << "already in use!" << std::endl;
+
+            // nodeID already in use
+            return false;
+        }
+
+        std::cout << "weitere runde" << std::endl;
     }
 }
 
-{
+
 bool Tree::remove(unsigned nodeID) {
 
     Node *current = root;
@@ -145,12 +162,12 @@ bool Tree::remove(unsigned nodeID) {
             // if node has left AND right child
             else {
 
-                parent
-
-
-
-
-
+                if (!parentSide) {
+                    parent->setLeft(current->getLeft());
+                }
+                else {
+                    parent->setRight(current->getLeft());
+                }
 
             }
         }
@@ -159,40 +176,6 @@ bool Tree::remove(unsigned nodeID) {
         return true;
     }
 }
-
-
-
-
-
-bool Tree::remove(unsigned nodeID) {
-
-    Node *current;
-    Node *parent;
-
-    while (true) {
-
-
-        /* PART 1: Find affected Node */
-
-        //
-        if (current)
-    }
-
-
-
-}
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 Node* Tree::search(unsigned int nodeID) {
@@ -228,9 +211,4 @@ Node* Tree::search(unsigned int nodeID) {
             return current;
         }
     }
-}
-
-
-void Tree::balance() {
-
 }
