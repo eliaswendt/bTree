@@ -17,6 +17,7 @@ class Tree
     private:
 
         Node *root;
+        unsigned nodeCount;
         unsigned lowestFreeID;
 };
 

@@ -9,19 +9,18 @@ using namespace std;
 
 int main(int argc, char* argv[]) {
 
-    Node *root = new Node("myRoot");
+    Node root("fucking root!"); // = new Node("myRoot");
 
-    Tree *bTree = new Tree(root);
-
+    Tree bTree(&root);
 
 
     string input;
     while (true) {
 
         getline(cin, input);
+        Node current(&input);
 
-
-        bTree->insert(new Node(input));
+        bTree.insert(&current);
     }
 
 

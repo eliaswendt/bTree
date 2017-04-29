@@ -145,12 +145,15 @@ bool Tree::remove(unsigned nodeID) {
             // if node has left AND right child
             else {
 
-                parent
-
-
-
-
-
+                
+                Node
+                
+                if (!parentSide) {
+                    parent->setLeft(get);
+                }
+                else {
+                    parent->setRight(current->getLeft());
+                }
 
             }
         }
