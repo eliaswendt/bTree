@@ -10,14 +10,14 @@ class Tree
         ~Tree();
 
         bool insert(Node *node);
-        void remove(unsigned int id);
-        Node* search(unsigned int id);
+        bool remove(unsigned id);
+        Node* search(unsigned id);
         void balance();
 
     private:
 
         Node *root;
-        unsigned int lowestID;
+        unsigned lowestFreeID;
 };
 
 #endif // TREE_H

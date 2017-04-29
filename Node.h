@@ -13,8 +13,8 @@ class Node
         unsigned int getID();
         void setLeft(Node *node);
         void setRight(Node *node);
-        void getLeft(Node &left);
-        void getRight(Node &right);
+        Node* getLeft();
+        Node* getRight();
         void setData(std::string data);
         std::string getData();
 

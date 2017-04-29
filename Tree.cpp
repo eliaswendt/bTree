@@ -14,16 +14,16 @@ Tree::~Tree()
 }
 
 
-bool insert(Node *node) {
+bool Tree::insert(Node *node) {
 
     Node *current = root;
-    unsigned nodeID = node.getID();
+    unsigned nodeID = node->getID();
     unsigned currentNodeID;
 
     while (true) {
 
         // buffer of current node
-        currentNodeID = current.getID();
+        currentNodeID = current->getID();
 
         // nodeID is smaller than current nodeID
         if (nodeID < currentNodeID) {
@@ -36,7 +36,7 @@ bool insert(Node *node) {
             }
 
             // left child is not empty
-            current = current.getLeft();
+            current = current->getLeft();
         }
 
         // nodeID is taller than current nodeID
@@ -51,7 +51,7 @@ bool insert(Node *node) {
 
             // right child is not empty
             else {
-                current = current.getLeft();
+                current = current->getLeft();
             }
         }
 
@@ -61,7 +61,7 @@ bool insert(Node *node) {
 }
 
 
-bool remove(unsigned int nodeID) {
+bool Tree::remove(unsigned nodeID) {
 
     Node *current = root;
     Node *parent;
@@ -72,7 +72,7 @@ bool remove(unsigned int nodeID) {
         if (nodeID < current->getID()) {
 
             // id does not exist in tree
-            if (current.getLeft() == NULL) {
+            if (current->getLeft() == NULL) {
 
                 return false;
             }
@@ -84,7 +84,7 @@ bool remove(unsigned int nodeID) {
         else if (nodeID > current->getID()) {
 
             // id does not exist in tree
-            if (current.getRight() == NULL) {
+            if (current->getRight() == NULL) {
 
                 return false;
             }
@@ -98,13 +98,13 @@ bool remove(unsigned int nodeID) {
         else {
 
 
-            Node *left = current.getLeft();
-            Node *right = current.getRight();
+            Node *left = current->getLeft();
+            Node *right = current->getRight();
 
             if (left == NULL && right == NULL) {
 
 
-                if (current == parent.getLeft()) {
+                if (current == parent->getLeft()) {
 
                 }
             }
@@ -132,7 +132,7 @@ bool remove(unsigned int nodeID) {
 }
 
 
-Node* search(unsigned int nodeID) {
+Node* Tree::search(unsigned int nodeID) {
 
     Node *current = root;
 
@@ -168,6 +168,6 @@ Node* search(unsigned int nodeID) {
 }
 
 
-void balance() {
+void Tree::balance() {
 
 }

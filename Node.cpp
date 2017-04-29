@@ -7,6 +7,11 @@ Node::Node(unsigned int id)
     //ctor
 }
 
+Node::~Node()
+{
+    //dtor
+}
+
 unsigned int Node::getID() {
     this->id;
 }
@@ -19,12 +24,12 @@ void Node::setRight(Node *node) {
     this->right = node;
 }
 
-void Node::getLeft(Node &left) {
-    left = this->left;
+Node* Node::getLeft() {
+    return this->left;
 }
 
-void Node::getRight(Node &right) {
-    right = this->right;
+Node* Node::getRight() {
+    return this->right;
 }
 
 void Node::setData(std::string data) {
@@ -33,11 +38,4 @@ void Node::setData(std::string data) {
 
 std::string Node::getData() {
     return this->data;
-}
-
-
-
-Node::~Node()
-{
-    //dtor
 }
