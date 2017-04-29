@@ -7,7 +7,7 @@ class Tree
 {
     public:
         Tree(Node * root);
-        virtual ~Tree();
+        ~Tree();
 
         bool insert(Node *node);
         void remove(unsigned int id);

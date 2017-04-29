@@ -19,12 +19,12 @@ void Node::setRight(Node *node) {
     this->right = node;
 }
 
-Node* Node::getLeft() {
-    return this->left;
+void Node::getLeft(Node &left) {
+    left = this->left;
 }
 
-Node* Node::getRight() {
-    return this->right;
+void Node::getRight(Node &right) {
+    right = this->right;
 }
 
 void Node::setData(std::string data) {

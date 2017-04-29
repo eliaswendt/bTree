@@ -8,13 +8,13 @@ class Node
 {
     public:
         Node(unsigned int id);
-        virtual ~Node();
+        ~Node();
 
         unsigned int getID();
         void setLeft(Node *node);
         void setRight(Node *node);
-        Node* getLeft();
-        Node* getRight();
+        void getLeft(Node &left);
+        void getRight(Node &right);
         void setData(std::string data);
         std::string getData();
 
