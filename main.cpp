@@ -29,7 +29,7 @@ int main(int argc, char* argv[]) {
         bTree->insert(new Node(id, data));
     }
 
-    cout << "serializing tree: " << endl << bTree->serialize(root);
+    cout << "serializing tree: " << endl << "{" << bTree->serialize(root) << "}";
 
 
 

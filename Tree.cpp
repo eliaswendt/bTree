@@ -187,21 +187,19 @@ std::string Tree::serialize(Node *current) {
 
     Node *left = current->getLeft(), *right = current->getRight();
 
-    std::string output = "{";
+    std::string output = "";
 
     // left subtree
     if (left != NULL) {
-        output += 'left:' + this->serialize(left) + ',';
+        output += "left:" + this->serialize(left) + ",";
     }
 
-    output += '{id:' + std::to_string(current->getID()) + ',value:' + current->getData() + '}';
+    output += "{id:" + std::to_string(current->getID()) + ",value:" + current->getData() + "}";
 
     // right subtree
     if (right != NULL) {
-        output += ',right:' + this->serialize(right);
+        output += ",right:" + this->serialize(right);
     }
-
-    output += '}';
 
     return output;
 }
