@@ -9,22 +9,27 @@ using namespace std;
 
 int main(int argc, char* argv[]) {
 
-    Node *root = new Node("myRoot");
+    Node *root = new Node(10, "root");
 
     Tree *bTree = new Tree(root);
 
 
 
-    string input;
-    while (true) {
+    int id;
+    string data;
 
-        getline(cin, input);
+    for (int i = 0; i < 6; i++) {
 
+        cout << "NodeID: ";
+        cin >> id;
+        cout << "Daten: ";
+        cin >> data;
+        cout << endl;
 
-        bTree->insert(new Node(input));
+        bTree->insert(new Node(id, data));
     }
 
-
+    cout << "serializing tree: " << endl << bTree->serialize(root);
 
 
 

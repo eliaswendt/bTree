@@ -1,5 +1,6 @@
 #include "Tree.h"
 #include "Node.h"
+#include <iostream>
 
 // set root
 Tree::Tree(Node *root)
@@ -20,10 +21,13 @@ bool Tree::insert(Node *node) {
     unsigned nodeID = node->getID();
     unsigned currentNodeID;
 
+    std::cout << "adding NodeID: " << nodeID << std::endl;
+
     while (true) {
 
         // buffer of current node
         currentNodeID = current->getID();
+        std::cout << currentNodeID;
 
         // nodeID is smaller than current nodeID
         if (nodeID < currentNodeID) {
@@ -32,8 +36,11 @@ bool Tree::insert(Node *node) {
             if (current->getLeft() == NULL) {
                 current->setLeft(node);
 
+                std::cout << " <- inserting" << std::endl << std::endl;
                 return true;
             }
+
+            std::cout << " <- ";
 
             // left child is not empty
             current = current->getLeft();
@@ -46,17 +53,25 @@ bool Tree::insert(Node *node) {
             if (current->getRight() == NULL) {
                 current->setRight(node);
 
+                std::cout << " -> inserting" << std::endl << std::endl;
                 return true;
             }
 
+            std::cout << " -> ";
+
             // right child is not empty
-            else {
-                current = current->getLeft();
-            }
+            current = current->getRight();
         }
 
-        // nodeID already in use
-        return false;
+        else {
+
+            std::cout << "Key of Node already in use!" << std::endl;
+
+            delete node;
+
+            // nodeID already in use
+            return false;
+        }
     }
 }
 
@@ -167,6 +182,27 @@ Node* Tree::search(unsigned int nodeID) {
     }
 }
 
+
+std::string Tree::serialize(Node *current) {
+
+    Node *left = current->getLeft(), *right = current->getRight();
+
+    std::string output = "";
+
+    // left subtree
+    if (left != NULL) {
+        output += this->serialize(left);
+    }
+
+    output += std::to_string(current->getID()) + '#' + current->getData() + '\n';
+
+    // right subtree
+    if (right != NULL) {
+        output += this->serialize(right);
+    }
+
+    return output;
+}
 
 void Tree::balance() {
 

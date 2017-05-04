@@ -1,9 +1,13 @@
 #include "Node.h"
 #include <string>
+#include <iostream>
 
-Node::Node(unsigned int id)
-: id(id)
+Node::Node(unsigned id, std::string data)
 {
+    this->id = id;
+    this->left = NULL;
+    this->right = NULL;
+    this->data = data;
     //ctor
 }
 
@@ -13,7 +17,7 @@ Node::~Node()
 }
 
 unsigned int Node::getID() {
-    this->id;
+    return this->id;
 }
 
 void Node::setLeft(Node *node) {
