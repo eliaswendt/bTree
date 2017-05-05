@@ -40,14 +40,7 @@ int main(int argc, char* argv[]) {
 
     }
 */
-    cout << "save to file: ";
-    getline(cin, input);
 
-    ofstream output;
-    output.open(input.c_str());
-    output << bTree->serialize(root) << endl;
-    output.close();
-    cout << "Daten gespeichert!" << endl;
 
 
     return 0;

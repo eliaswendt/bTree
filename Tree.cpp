@@ -3,9 +3,10 @@
 #include <iostream>
 
 // set root
-Tree::Tree(Node *root)
-: root(root)
+Tree::Tree(Node *root, bool debug)
 {
+    this->root = root;
+    this->debug = debug;
     //ctor
 }
 
@@ -80,6 +81,8 @@ bool Tree::remove(unsigned nodeID) {
 
     Node *current = root;
     Node *parent;
+
+    bool left = true;
 
 
     while(true) {
@@ -183,9 +186,9 @@ Node* Tree::search(unsigned int nodeID) {
 }
 
 
-std::string Tree::serialize(Node *current) {
+bool Tree::exportJSON(const char* fileName) {
 
-    Node *left = current->getLeft(), *right = current->getRight();
+    Node *left = root->getLeft(), *right = root->getRight();
 
     std::string output = "{";
 
@@ -194,7 +197,7 @@ std::string Tree::serialize(Node *current) {
         output += "\"left\":" + this->serialize(left) + ",";
     }
 
-    output += "\"middle\":{\"id\":" + std::to_string(current->getID()) + ",\"value\":\"" + current->getData() + "\"}";
+    output += "\"middle\":{\"id\":" + std::to_string(root->getID()) + ",\"value\":\"" + root->getData() + "\"}";
 
     // right subtree
     if (right != NULL) {
@@ -203,7 +206,27 @@ std::string Tree::serialize(Node *current) {
 
     output += "}";
 
-    return output;
+
+    ofstream outputStream;
+    outputStream.open(filename);
+    outputStream << output;
+    outputStream.close();
+
+    return true;
+}
+
+
+bool Tree::importJSON(const char* fileName) {
+
+    string input;
+
+    ifstream inputStream;
+    inputStream.open(fileName);
+
+    // just first line
+    getline(inputStream, input);
+
+    return false;
 }
 
 void Tree::balance() {
